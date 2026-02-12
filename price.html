@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set Product Price | AquaFlow ERP</title>
+    <!-- Professional Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="price.css">
+</head>
+<body>
+
+    <!-- Professional Software Header -->
+    <header class="top-bar">
+        <div class="header-logo">
+            <div class="logo-circle"><i class="fas fa-droplet"></i></div>
+            <div class="logo-text">
+                <h1>Drinking Water 💧</h1>
+                <p>Inventory Software</p>
+            </div>
+        </div>
+        
+        <nav class="software-nav">
+            <a href="produ.html" class="nav-item"><i class="fas fa-chart-line"></i><span>Dashboard 📊</span></a>
+            <a href="Prod.html" class="nav-item active"><i class="fas fa-box"></i><span>Products 📦</span></a>
+            <a href="Cust.html" class="nav-item"><i class="fas fa-users"></i><span>Customers 👥</span></a>
+            <a href="vendor.html" class="nav-item"><i class="fas fa-truck-field"></i><span>Vendor 🚛</span></a>
+            <a href="staff.html" class="nav-item"><i class="fas fa-user-tie"></i><span>Employee 👤</span></a>
+            <a href="Reports.html" class="nav-item"><i class="fas fa-file-invoice"></i><span>Reports 📑</span></a>
+            <a href="Expenditure.html" class="nav-item"><i class="fas fa-dollar-sign"></i><span>Expenditure 💸</span></a>
+            <a href="Order.html" class="nav-item"><i class="fas fa-money-bill-transfer"></i><span>Transaction 💳</span></a>
+            <a href="Settings.html" class="nav-item"><i class="fas fa-gears"></i><span>Setting ⚙️</span></a>
+        </nav>
+
+        <div class="window-controls">
+            <button id="theme-toggle" title="Switch Theme"><i class="fas fa-moon"></i></button>
+            <i class="fas fa-window-minimize"></i>
+            <i class="fas fa-rectangle-xmark close-btn" onclick="location.href='produ.html'"></i>
+        </div>
+    </header>
+
+    <div class="user-strip">
+        <span><b>User:</b> Tahir Qureshi 👤</span>
+    </div>
+
+    <main class="workspace">
+        <div class="page-header">
+            <h2>SET PRODUCT PRICE 💰</h2>
+            <div class="search-section">
+                <label>Search By Customer ID</label>
+                <div class="search-group">
+                    <input type="text" id="custSearchId" class="qty-yellow" placeholder="Enter ID...">
+                    <button class="btn-red-sm" onclick="searchCustomer()">Search</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-grid">
+            <!-- LEFT: Pricing Controls -->
+            <section class="controls-pane">
+                <!-- Top Form: Set New -->
+                <div class="group-box">
+                    <span class="group-label">Set New Product</span>
+                    <form id="setPriceForm">
+                        <div class="input-set">
+                            <label>Select Product</label>
+                            <select id="newSelectProduct" required>
+                                <option value="">Select Product</option>
+                                <!-- Linked from Prod.html Storage -->
+                            </select>
+                        </div>
+                        <div class="input-set">
+                            <label>Price</label>
+                            <input type="number" id="newPriceInput" placeholder="0.00" required>
+                        </div>
+                        <button type="submit" class="btn-blue-dark">Set New Product ➕</button>
+                    </form>
+                </div>
+
+                <!-- Bottom Form: Update -->
+                <div class="group-box" style="margin-top: 25px;">
+                    <span class="group-label">Update Product Price</span>
+                    <form id="updatePriceForm">
+                        <div class="input-set">
+                            <label>Select Product</label>
+                            <input type="text" id="updateProductName" class="read-only-grey" readonly placeholder="Pick from table →">
+                        </div>
+                        <div class="input-set">
+                            <label>Price</label>
+                            <input type="number" id="updatePriceInput" placeholder="0.00" required>
+                        </div>
+                        <button type="submit" class="btn-blue-dark">Update Price 🔄</button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- RIGHT: Details & Table -->
+            <section class="details-pane">
+                <div class="group-box">
+                    <span class="group-label">Products Detail</span>
+                    
+                    <div class="customer-info-box">
+                        <p class="box-tag">Customer Information</p>
+                        <div class="info-row">
+                            <div class="info-item">
+                                <label>Customer ID</label>
+                                <input type="text" id="resCustId" class="read-only-grey" readonly>
+                            </div>
+                            <div class="info-item">
+                                <label>Customer Name:</label>
+                                <input type="text" id="resCustName" class="read-only-grey" readonly>
+                            </div>
+                            <div class="info-item">
+                                <label>Address:</label>
+                                <input type="text" id="resCustAddr" class="read-only-grey" readonly>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th width="80">SNO</th>
+                                    <th>Product Name</th>
+                                    <th width="150">Price</th>
+                                </tr>
+                            </thead>
+                            <tbody id="priceTableBody">
+                                <!-- Populated by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Professional Status Bar -->
+    <footer class="status-bar">
+        <div class="status-left">Copyright all rights reserved by <b>SOFTWEBPK</b></div>
+        <div class="status-center">App Code: <b>RG-Demo</b></div>
+        <div class="status-right">Help Line: <b>0092-315-1150070</b> 📞</div>
+    </footer>
+
+    <script src="price.js"></script>
+</body>
+</html>

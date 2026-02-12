@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purchase History | AquaFlow Pro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="Purch.css">
+</head>
+<body>
+
+    <!-- Professional Top Bar -->
+    <header class="top-bar">
+        <div class="brand">
+            <div class="logo-circle"><i class="fas fa-cart-shopping"></i></div>
+            <div class="brand-info">
+                <h1>AquaFlow Purch 📈</h1>
+                <p>Procurement Ledger</p>
+            </div>
+        </div>
+        <div class="user-controls">
+            <button id="theme-toggle"><i class="fas fa-moon"></i></button>
+            <div class="user-profile">
+                <span>Finance Dept 👤</span>
+                <img src="https://ui-avatars.com/api/?name=Finance&background=0062BD&color=fff" alt="User">
+            </div>
+        </div>
+    </header>
+
+    <div class="app-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <nav class="side-nav">
+                <a href="produ.html" class="nav-link"><i class="fas fa-chart-pie"></i> Dashboard 📊</a>
+                <a href="#" class="nav-item-head">HISTORY & LOGS 📜</a>
+                <a href="Purch.html" class="nav-link active"><i class="fas fa-file-invoice-dollar"></i> Purchase History 📑</a>
+                <a href="#" class="nav-link"><i class="fas fa-truck-ramp-box"></i> Delivery Logs 🚚</a>
+                <a href="#" class="nav-link"><i class="fas fa-users-viewfinder"></i> Vendor List 👥</a>
+                <a href="#" class="nav-item-head">REPORTS 📈</a>
+                <a href="#" class="nav-link"><i class="fas fa-scale-balanced"></i> Profit & Loss ⚖️</a>
+            </nav>
+        </aside>
+
+        <!-- Main Workspace -->
+        <main class="workspace">
+            <div class="container">
+                
+                <section class="page-header">
+                    <div class="header-text">
+                        <h2>Purchase History Audit 🛒</h2>
+                        <p>View and manage all inward stock transactions and vendor payments.</p>
+                    </div>
+                    <button class="btn-primary"><i class="fas fa-plus"></i> New Purchase Entry</button>
+                </section>
+
+                <!-- Summary Analytics -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span class="label">Total Spend (MTD)</span>
+                        <h3 class="value">$12,450.00</h3>
+                        <span class="trend up"><i class="fas fa-arrow-up"></i> 5.2%</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="label">Pending Invoices</span>
+                        <h3 class="value">08</h3>
+                        <span class="trend warn">Action Required</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="label">Raw Water Inward</span>
+                        <h3 class="value">85,000 Ltr</h3>
+                        <span class="trend">Last 30 Days</span>
+                    </div>
+                </div>
+
+                <!-- Filter & Data Table -->
+                <div class="data-card">
+                    <div class="card-header">
+                        <div class="filter-bar">
+                            <input type="date" id="dateFilter">
+                            <select id="vendorFilter">
+                                <option value="">All Vendors</option>
+                                <option>Indus Raw Water Co.</option>
+                                <option>PET-Pack Bottles</option>
+                                <option>Global Filtration Ltd</option>
+                            </select>
+                            <button class="btn-refresh"><i class="fas fa-filter"></i> Apply</button>
+                        </div>
+                        <button class="btn-export"><i class="fas fa-file-excel"></i> Export</button>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Ref ID #</th>
+                                    <th>Date 📅</th>
+                                    <th>Vendor / Supplier 🚛</th>
+                                    <th>Product Category 📦</th>
+                                    <th>Total Amount 💰</th>
+                                    <th>Status ✅</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="purchaseTableBody">
+                                <!-- Data populated by Purch.js -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer class="status-bar">
+        <div class="status-left">© SOFTWEBPK Finance Module v1.2</div>
+        <div class="status-center">System Status: <span class="online">● Operational</span></div>
+        <div class="status-right">DB Last Sync: <span id="syncTime">14:05 PM</span></div>
+    </footer>
+
+    <script src="Purch.js"></script>
+</body>
+</html>

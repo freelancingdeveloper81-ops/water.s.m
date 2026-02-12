@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendor Management | AquaFlow Pro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="vendor.css">
+</head>
+<body>
+
+    <!-- Professional Top Bar Linked -->
+    <header class="top-bar">
+        <div class="header-logo">
+            <div class="logo-circle"><i class="fas fa-droplet"></i></div>
+            <div class="logo-text">
+                <h1>Drinking Water 💧</h1>
+                <p>Inventory Software</p>
+            </div>
+        </div>
+
+        <nav class="icon-nav">
+            <a href="produ.html" class="nav-item"><i class="fas fa-chart-line"></i><span>Dashboard</span></a>
+            <a href="Vendor.html" class="nav-item active"><i class="fas fa-truck-field"></i><span>Vendors</span></a>
+            <a href="Stock.html" class="nav-item"><i class="fas fa-right-left"></i><span>Stock</span></a>
+            <a href="Reports.html" class="nav-item"><i class="fas fa-file-invoice"></i><span>Reports</span></a>
+            <a href="Settings.html" class="nav-item"><i class="fas fa-gear"></i><span>Settings</span></a>
+        </nav>
+
+        <div class="window-controls">
+            <button id="theme-toggle"><i class="fas fa-moon"></i></button>
+            <i class="fas fa-rectangle-xmark close-btn" onclick="location.href='produ.html'"></i>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <!-- Dynamic Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon blue"><i class="fas fa-building-ngo"></i></div>
+                    <div class="stat-info">
+                        <h3>Active Suppliers</h3>
+                        <p class="value" id="activeVendorsCount">0</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon red"><i class="fas fa-hand-holding-dollar"></i></div>
+                    <div class="stat-info">
+                        <h3>Accounts Payable 💸</h3>
+                        <p class="value" id="totalPayableAmount">$0.00</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon green"><i class="fas fa-cart-shopping"></i></div>
+                    <div class="stat-info">
+                        <h3>Total Orders</h3>
+                        <p class="value" id="totalOrdersCount">0</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Management Tabs -->
+            <div class="tab-box">
+                <button class="tab-link active" onclick="openTab('list')">Supplier Directory 📖</button>
+                <button class="tab-link" onclick="openTab('purchase')">New Purchase Record 📥</button>
+            </div>
+
+            <!-- Tab 1: List -->
+            <div id="list" class="tab-content active">
+                <div class="filter-bar">
+                    <input type="text" id="vendorSearch" placeholder="Search supplier..." oninput="filterVendors()">
+                    <button class="btn-clear-db" onclick="resetVendors()"><i class="fas fa-sync"></i> Reset</button>
+                </div>
+                <div class="table-container">
+                    <table class="pro-table">
+                        <thead>
+                            <tr>
+                                <th>Vendor Name 🏭</th>
+                                <th>Category 🏷️</th>
+                                <th>Contact 📞</th>
+                                <th>Account Balance 💰</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="vendorTableBody">
+                            <!-- JS Injection -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Tab 2: Form Linked to DB -->
+            <div id="purchase" class="tab-content">
+                <div class="form-card">
+                    <h3>Register Inward Purchase 🛒</h3>
+                    <form id="purchaseForm" class="grid-form">
+                        <div class="input-group">
+                            <label>Select Vendor</label>
+                            <select id="vSelect" required>
+                                <!-- Populated from JS -->
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label>Purchase Date</label>
+                            <input type="date" id="pDate" required>
+                        </div>
+                        <div class="input-group">
+                            <label>Item / Description</label>
+                            <input type="text" id="pDesc" placeholder="e.g. 5000L Tanker" required>
+                        </div>
+                        <div class="input-group">
+                            <label>Bill Amount ($)</label>
+                            <input type="number" id="pAmount" step="0.01" required>
+                        </div>
+                        <div class="form-actions full-width">
+                            <button type="submit" class="btn-primary">Commit Purchase ✅</button><br><br>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="status-bar">
+        <div class="status-left">© SOFTWEBPK - Procurement Module</div>
+        <div class="status-right">DB Connection: <span class="sync">● Encrypted & Active</span></div>
+    </footer>
+
+    <script src="Vendor.js"></script>
+</body>
+</html>

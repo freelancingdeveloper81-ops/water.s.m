@@ -1,0 +1,285 @@
+/* --- 1. Enterprise Variables & Theme Engine --- */
+:root {
+    /* Brand Colors */
+    --primary: #0062BD;
+    --primary-soft: rgba(0, 98, 189, 0.08);
+    --primary-dark: #004a8f;
+    
+    /* Semantic Status Colors */
+    --success: #10b981; /* Paid/Received */
+    --warning: #f59e0b; /* Pending/Partial */
+    --danger: #ef4444;  /* Cancelled/Overdue */
+    
+    /* Surface Colors (Light Mode) */
+    --bg-main: #f4f7fa;
+    --bg-sidebar: #ffffff;
+    --bg-card: #ffffff;
+    --text-head: #0f172a;
+    --text-body: #475569;
+    --border: #e2e8f0;
+    
+    /* Effects */
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+    --shadow-md: 0 10px 25px -5px rgba(0,0,0,0.04);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-theme="dark"] {
+    --bg-main: #0b0f1a;
+    --bg-sidebar: #131926;
+    --bg-card: #1c2533;
+    --text-head: #f1f5f9;
+    --text-body: #94a3b8;
+    --border: #2d3748;
+    --primary-soft: rgba(255, 255, 255, 0.05);
+}
+
+/* --- 2. Professional Foundations --- */
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    font-family: 'Inter', -apple-system, system-ui, sans-serif; 
+}
+
+body {
+    background: var(--bg-main);
+    color: var(--text-body);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Standard for Desktop ERP Systems */
+    transition: background var(--transition);
+}
+
+/* Custom Professional Scrollbar */
+.workspace::-webkit-scrollbar { width: 6px; }
+.workspace::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; }
+.workspace::-webkit-scrollbar-thumb:hover { background: var(--primary); }
+
+/* --- 3. Procurement Header --- */
+.top-bar {
+    background: var(--primary);
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+    color: #ffffff;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.brand { display: flex; align-items: center; gap: 15px; }
+.logo-circle {
+    background: #ffffff;
+    color: var(--primary);
+    width: 38px; height: 38px;
+    border-radius: 10px; /* Modern Squircle */
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem;
+}
+
+.brand-info h1 { font-size: 1.05rem; font-weight: 700; letter-spacing: -0.02em; }
+.brand-info p { font-size: 0.7rem; opacity: 0.8; font-weight: 500; text-transform: uppercase; }
+
+.user-profile { display: flex; align-items: center; gap: 12px; cursor: pointer; }
+.user-profile span { font-size: 0.85rem; font-weight: 600; }
+.user-profile img { width: 34px; height: 34px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.2); }
+
+#theme-toggle { background: none; border: none; color: white; cursor: pointer; font-size: 1.1rem; padding: 5px; }
+
+/* --- 4. Sidebar & Layout Navigation --- */
+.app-layout { display: flex; flex: 1; overflow: hidden; }
+
+.sidebar {
+    width: 270px;
+    background: var(--bg-sidebar);
+    border-right: 1px solid var(--border);
+    padding: 20px 0;
+}
+
+.nav-item-head {
+    font-size: 0.65rem;
+    font-weight: 800;
+    color: var(--text-body);
+    padding: 25px 25px 8px;
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0.6;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 25px;
+    color: var(--text-body);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.nav-link:hover { color: var(--primary); background: var(--primary-soft); }
+.nav-link.active {
+    background: var(--primary-soft);
+    color: var(--primary);
+    font-weight: 700;
+    border-right: 4px solid var(--primary);
+}
+
+/* --- 5. Workspace Area --- */
+.workspace { 
+    flex: 1; 
+    overflow-y: auto; 
+    padding: 40px 60px; 
+    scroll-behavior: smooth;
+}
+
+.page-header { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    margin-bottom: 35px; 
+}
+
+.header-text h2 { font-size: 1.75rem; color: var(--text-head); font-weight: 800; }
+.header-text p { font-size: 0.9rem; margin-top: 5px; }
+
+.btn-primary {
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: var(--transition);
+}
+.btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); }
+
+/* --- 6. Analytics Stats Grid --- */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.stat-card {
+    background: var(--bg-card);
+    padding: 25px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+}
+
+.stat-card .label { font-size: 0.75rem; font-weight: 700; color: var(--text-body); text-transform: uppercase; letter-spacing: 0.05em; }
+.stat-card .value { font-size: 1.75rem; font-weight: 800; color: var(--text-head); margin: 8px 0; }
+
+.trend { font-size: 0.8rem; font-weight: 700; display: flex; align-items: center; gap: 5px; }
+.trend.up { color: var(--success); }
+.trend.warn { color: var(--warning); }
+
+/* --- 7. Data Card & Professional Table --- */
+.data-card {
+    background: var(--bg-card);
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+}
+
+.card-header {
+    padding: 20px 25px;
+    background: rgba(0,0,0,0.01);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+}
+
+/* Filtering UI */
+.filter-bar { display: flex; gap: 15px; }
+.filter-bar input, .filter-bar select {
+    padding: 10px 15px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--bg-main);
+    color: var(--text-head);
+    font-size: 0.85rem;
+}
+
+.btn-export { background: transparent; border: 1px solid var(--border); padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: 600; color: var(--text-body); }
+
+/* Table Logic */
+.data-table { width: 100%; border-collapse: collapse; }
+.data-table th {
+    text-align: left;
+    padding: 18px 25px;
+    font-size: 0.75rem;
+    color: var(--text-body);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    background: rgba(0,0,0,0.02);
+}
+
+.data-table td {
+    padding: 18px 25px;
+    border-top: 1px solid var(--border);
+    font-size: 0.9rem;
+    color: var(--text-head);
+}
+
+.data-table tr:hover { background: var(--primary-soft); }
+
+/* Status Badges */
+.badge-paid { color: var(--success); background: rgba(16, 185, 129, 0.1); padding: 5px 12px; border-radius: 50px; font-weight: 700; font-size: 0.75rem; }
+.badge-pending { color: var(--warning); background: rgba(245, 158, 11, 0.1); padding: 5px 12px; border-radius: 50px; font-weight: 700; font-size: 0.75rem; }
+
+.btn-action { 
+    background: transparent; border: none; color: var(--primary); 
+    cursor: pointer; font-size: 1.1rem; transition: var(--transition);
+}
+.btn-action:hover { transform: scale(1.2); }
+
+/* --- 8. Footer Status Bar --- */
+.status-bar {
+    height: 40px;
+    background: #0f172a;
+    color: #94a3b8;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+    font-size: 0.75rem;
+}
+
+.online { color: var(--success); font-weight: 700; }
+
+/* --- 9. Adaptive Design (Responsive) --- */
+@media (max-width: 1024px) {
+    .sidebar { width: 85px; }
+    .sidebar .nav-link span, .sidebar .nav-item-head { display: none; }
+    .nav-link { justify-content: center; }
+    .workspace { padding: 30px; }
+}
+
+@media (max-width: 768px) {
+    .top-bar { padding: 0 15px; }
+    .brand-info { display: none; }
+    .app-layout { flex-direction: column; }
+    .sidebar { 
+        width: 100%; height: auto; display: flex; 
+        overflow-x: auto; padding: 5px; border-right: none; 
+        border-bottom: 1px solid var(--border); 
+    }
+    .nav-link { white-space: nowrap; padding: 10px 20px; }
+    .stats-grid { grid-template-columns: 1fr; }
+    .page-header { flex-direction: column; gap: 20px; align-items: flex-start; }
+}

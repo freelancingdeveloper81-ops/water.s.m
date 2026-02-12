@@ -1,0 +1,71 @@
+/* --- Variables --- */
+:root {
+    --primary: #0078D4; /* Your image header blue */
+    --bg: #ffffff;
+    --surface: #f3f9ff;
+    --text: #1a202c;
+    --text-muted: #4a5568;
+    --border: #e2e8f0;
+    --white: #ffffff;
+}
+
+[data-theme="dark"] {
+    --bg: #0b1120;
+    --surface: #1e293b;
+    --text: #f1f5f9;
+    --text-muted: #94a3b8;
+    --border: #334155;
+}
+
+/* --- Global --- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); transition: 0.3s; line-height: 1.6; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 5%; }
+
+/* --- Header --- */
+.service-nav { background: var(--primary); padding: 10px 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+.nav-wrapper { display: flex; justify-content: space-between; align-items: center; }
+.logo { color: white; font-weight: 800; font-size: 1.4rem; letter-spacing: 1px; }
+.logo span { font-weight: 300; }
+
+.icon-menu { display: flex; gap: 20px; align-items: center; }
+.icon-menu a { color: rgba(255,255,255,0.8); text-decoration: none; display: flex; flex-direction: column; align-items: center; font-size: 0.75rem; transition: 0.3s; }
+.icon-menu i { font-size: 1.2rem; margin-bottom: 4px; }
+.icon-menu a.active, .icon-menu a:hover { color: white; }
+
+#theme-toggle { background: rgba(255,255,255,0.2); border: none; color: white; padding: 8px 12px; border-radius: 8px; cursor: pointer; }
+
+/* --- Hero --- */
+.services-hero { padding: 80px 0 40px; text-align: center; }
+.services-hero h1 { font-size: 3rem; font-weight: 800; margin-bottom: 10px; }
+.blue-text { color: var(--primary); }
+.services-hero p { color: var(--text-muted); font-size: 1.2rem; }
+
+/* --- Service Blocks --- */
+.services-detail { padding: 60px 0; }
+.service-block { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; margin-bottom: 100px; }
+.service-block.reverse { direction: rtl; }
+.service-block.reverse .service-info { direction: ltr; }
+
+.service-no { font-size: 4rem; font-weight: 900; color: var(--primary); opacity: 0.15; display: block; line-height: 1; }
+.service-info h2 { font-size: 2.2rem; margin: -20px 0 20px; font-weight: 700; }
+.service-info p { margin-bottom: 20px; color: var(--text-muted); }
+
+.detail-list { list-style: none; margin-bottom: 30px; }
+.detail-list li { margin-bottom: 10px; display: flex; align-items: center; gap: 10px; font-weight: 500; }
+.detail-list i { color: var(--primary); }
+
+.service-img img { width: 100%; border-radius: 24px; box-shadow: 20px 20px 60px rgba(0,0,0,0.05); }
+
+/* --- Buttons --- */
+.s-btn { display: inline-block; padding: 14px 30px; background: var(--primary); color: white; text-decoration: none; border-radius: 12px; font-weight: 600; transition: 0.3s; }
+.s-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,120,212,0.3); }
+.alert-btn { background: #e53e3e; }
+
+/* --- Responsive --- */
+@media (max-width: 900px) {
+    .service-block, .service-block.reverse { grid-template-columns: 1fr; gap: 30px; text-align: center; }
+    .service-block.reverse { direction: ltr; }
+    .detail-list li { justify-content: center; }
+    .services-hero h1 { font-size: 2.2rem; }
+}

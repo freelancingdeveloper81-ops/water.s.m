@@ -1,0 +1,97 @@
+/* --- Professional Blue Variables --- */
+:root {
+    --primary: #0077b6;
+    --primary-dark: #023e8a;
+    --accent: #00b4d8;
+    --bg-main: #f0f9ff;
+    --bg-card: #ffffff;
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --border: #e2e8f0;
+    --success: #10b981;
+}
+
+[data-theme="dark"] {
+    --bg-main: #020617;
+    --bg-card: #0f172a;
+    --text-main: #f1f5f9;
+    --text-muted: #94a3b8;
+    --border: #1e293b;
+}
+
+/* --- Core Layout --- */
+* { margin:0; padding:0; box-sizing: border-box; }
+body { font-family: 'Inter', sans-serif; background-color: var(--bg-main); color: var(--text-main); transition: 0.3s; }
+.container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+
+/* --- Header --- */
+.main-header { padding: 20px 0; border-bottom: 1px solid var(--border); }
+.nav-flex { display: flex; justify-content: space-between; align-items: center; }
+.logo { font-size: 1.5rem; font-weight: 800; text-decoration: none; color: var(--text-main); }
+.logo span { color: var(--primary); }
+
+/* --- Booking Container --- */
+.booking-page { padding: 60px 0; }
+.booking-wrapper, .thank-you-container {
+    background: var(--bg-card);
+    padding: 50px;
+    border-radius: 24px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+    border: 1px solid var(--border);
+}
+
+.booking-header { text-align: center; margin-bottom: 40px; }
+.booking-header h1 { font-size: 2.5rem; margin-bottom: 10px; }
+.accent { color: var(--primary); }
+
+/* --- Progress Bar --- */
+.progress-container { display: flex; justify-content: space-between; position: relative; margin: 30px auto; max-width: 400px; }
+.progress-container::before { content: ""; background-color: var(--border); position: absolute; top: 50%; left: 0; transform: translateY(-50%); height: 4px; width: 100%; z-index: 1; }
+.progress { background-color: var(--primary); position: absolute; top: 50%; left: 0; transform: translateY(-50%); height: 4px; width: 0%; z-index: 1; transition: 0.4s ease; }
+.circle { background-color: var(--bg-card); border: 4px solid var(--border); border-radius: 50%; height: 40px; width: 40px; display: flex; align-items: center; justify-content: center; z-index: 2; transition: 0.4s ease; font-weight: bold; }
+.circle.active { border-color: var(--primary); color: var(--primary); }
+
+/* --- Form Styles --- */
+.form-step { display: none; }
+.form-step.active { display: block; animation: slideIn 0.5s ease; }
+
+.step-title { margin-bottom: 30px; font-size: 1.25rem; color: var(--primary); border-bottom: 1px solid var(--border); padding-bottom: 10px; }
+.input-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.form-group { margin-bottom: 20px; display: flex; flex-direction: column; }
+.form-group label { margin-bottom: 8px; font-weight: 600; font-size: 0.9rem; }
+.form-group input, .form-group select, .form-group textarea {
+    padding: 12px 16px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--bg-main);
+    color: var(--text-main);
+    font-size: 1rem;
+    outline: none;
+    transition: 0.3s;
+}
+.form-group input:focus { border-color: var(--primary); }
+
+/* --- Buttons --- */
+.form-footer { display: flex; justify-content: space-between; margin-top: 30px; }
+.btn-next, .btn-submit, .btn-primary { background: var(--primary); color: white; border: none; padding: 14px 28px; border-radius: 10px; cursor: pointer; font-weight: bold; transition: 0.3s; font-size: 1rem; }
+.btn-prev { background: transparent; border: 1px solid var(--border); color: var(--text-muted); padding: 14px 28px; border-radius: 10px; cursor: pointer; }
+.btn-submit { background: var(--success); width: 100%; }
+.btn-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+
+/* --- Thank You Page Styles --- */
+.thank-you-container { text-align: center; }
+.success-icon { font-size: 5rem; color: var(--success); margin-bottom: 20px; }
+.thank-you-container h1 { margin-bottom: 15px; }
+.next-steps { text-align: left; background: var(--bg-main); padding: 25px; border-radius: 15px; margin: 30px 0; }
+.next-steps h3 { margin-bottom: 15px; font-size: 1.1rem; }
+.next-steps ul { list-style: none; }
+.next-steps li { margin-bottom: 10px; font-size: 0.95rem; display: flex; align-items: center; gap: 10px; }
+.next-steps li i { color: var(--primary); }
+
+/* --- Animations --- */
+@keyframes slideIn { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
+
+@media (max-width: 768px) {
+    .input-grid { grid-template-columns: 1fr; }
+    .booking-wrapper { padding: 30px 20px; }
+}

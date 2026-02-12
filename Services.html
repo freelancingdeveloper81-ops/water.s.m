@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Center | AquaFlow Pro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="Security.css">
+</head>
+<body>
+
+    <!-- Professional Top Bar with System Links -->
+    <header class="top-bar">
+        <div class="brand">
+            <div class="logo-circle"><i class="fas fa-shield-halved"></i></div>
+            <div class="brand-info">
+                <h1>Security Center 🔐</h1>
+                <p>System Admin & Config</p>
+            </div>
+        </div>
+
+        <!-- Main Module Switcher -->
+        <nav class="main-nav">
+            <a href="produ.html" class="nav-item"><i class="fas fa-chart-line"></i><span>Dashboard</span></a>
+            <a href="Prod.html" class="nav-item"><i class="fas fa-box"></i><span>Inventory</span></a>
+            <a href="cust.html" class="nav-item"><i class="fas fa-users"></i><span>Customers</span></a>
+            <a href="Reports.html" class="nav-item"><i class="fas fa-file-contract"></i><span>Reports</span></a>
+            <a href="Settings.html" class="nav-item"><i class="fas fa-gear"></i><span>Settings</span></a>
+        </nav>
+
+        <div class="header-actions">
+            <button id="theme-toggle" class="icon-btn"><i class="fas fa-moon"></i></button>
+            <div class="user-pill" onclick="location.href='Settings.html'">
+                <span>Super Admin</span>
+                <img src="https://ui-avatars.com/api/?name=Admin&background=0062BD&color=fff" alt="Admin">
+            </div>
+            <i class="fas fa-rectangle-xmark close-btn" onclick="location.href='produ.html'"></i>
+        </div>
+    </header>
+
+    <div class="app-layout">
+        <!-- Configuration Sidebar -->
+        <aside class="sidebar">
+            <nav class="side-nav">
+                <div class="nav-label">Security Panels</div>
+                <a href="#" class="side-link active" data-target="profile"><i class="fas fa-building-user"></i> Company Profile</a>
+                <a href="#" class="side-link" data-target="users"><i class="fas fa-users-gear"></i> User Management</a>
+                <a href="#" class="side-link" data-target="logs"><i class="fas fa-clipboard-list"></i> Activity Audit</a>
+                
+                <div class="nav-label">External Modules</div>
+                <a href="Settings.html" class="side-link"><i class="fas fa-sliders"></i> Global Settings</a>
+                <a href="Reports.html" class="side-link"><i class="fas fa-print"></i> Print Queue</a>
+            </nav>
+        </aside>
+
+        <!-- Main Workspace -->
+        <main class="workspace">
+            
+            <!-- Panel 1: Company Profile -->
+            <section id="profile-panel" class="settings-panel active">
+                <div class="panel-header">
+                    <h2>Company Identity 🏢</h2>
+                    <p>Global branding and tax details for automated invoicing.</p>
+                </div>
+                <div class="form-card">
+                    <div class="input-grid">
+                        <div class="field full">
+                            <label>Legal Business Name</label>
+                            <input type="text" id="businessName" value="AquaFlow Pure Water Supply Ltd.">
+                        </div>
+                        <div class="field">
+                            <label>Tax ID / NTN</label>
+                            <input type="text" value="TAX-99281-00">
+                        </div>
+                        <div class="field">
+                            <label>Database Region</label>
+                            <input type="text" value="Karachi Central" readonly>
+                        </div>
+                    </div>
+                    <button class="btn-save" onclick="saveAdminSettings()"><i class="fas fa-cloud-arrow-up"></i> Sync & Save ✅</button>
+                </div>
+            </section>
+
+            <!-- Panel 2: User Management (Internal Logic) -->
+            <section id="users-panel" class="settings-panel">
+                <div class="panel-header">
+                    <h2>System User Accounts 👥</h2>
+                    <button class="btn-add"><i class="fas fa-user-plus"></i> New User</button>
+                </div>
+                <div class="data-card">
+                    <table class="pro-table">
+                        <thead>
+                            <tr>
+                                <th>User ID</th>
+                                <th>Full Name</th>
+                                <th>Role</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="userTableBody">
+                            <!-- Dynamic Data -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Panel 3: Activity Logs -->
+            <section id="logs-panel" class="settings-panel">
+                <div class="panel-header">
+                    <h2>Activity Audit Trail 📜</h2>
+                    <p>Monitoring all administrative and operational actions.</p>
+                </div>
+                <div class="audit-list" id="auditLogContainer">
+                    <!-- Logs injected from JS -->
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <footer class="status-bar">
+        <div class="status-left">© SOFTWEBPK Enterprise v4.5 | Secured Terminal</div>
+        <div class="status-right">Environment: <span class="secure">Production Server ●</span></div>
+    </footer>
+
+    <script src="Security.js"></script>
+</body>
+</html>

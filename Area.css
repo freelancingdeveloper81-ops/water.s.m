@@ -1,0 +1,71 @@
+:root {
+    --primary: #0062BD;
+    --dark-blue: #003b5c;
+    --bg-page: #f0f4f7;
+    --border: #ccc;
+    --red: #c02031;
+    --yellow-focus: #fff9c4;
+}
+
+[data-theme="dark"] {
+    --bg-page: #0d1117;
+    --border: #334155;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, sans-serif; }
+body { height: 100vh; display: flex; flex-direction: column; overflow: hidden; background: var(--bg-page); }
+
+/* Header & Nav */
+.top-bar { background: var(--primary); color: white; height: 65px; display: flex; align-items: center; justify-content: space-between; padding: 0 15px; flex-shrink: 0; }
+.logo-circle { background: white; color: var(--primary); width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+.software-nav { display: flex; flex: 1; justify-content: center; gap: 5px; }
+.nav-item { color: white; text-decoration: none; display: flex; flex-direction: column; align-items: center; font-size: 0.65rem; padding: 5px; }
+.nav-item.active { background: rgba(255,255,255,0.2); border-radius: 4px; }
+.user-strip { background: #fff; padding: 6px 20px; border-bottom: 1px solid var(--border); font-size: 0.8rem; color: #666; flex-shrink: 0; }
+
+/* Workspace Scrolling Fix */
+.workspace { flex: 1; overflow-y: auto; padding: 20px; }
+.page-title h2 { font-size: 1.1rem; color: var(--primary); font-weight: 800; margin-bottom: 20px; }
+
+/* Main Grid Layout */
+.main-grid { display: flex; gap: 20px; align-items: flex-start; }
+.action-pane { flex: 0.35; min-width: 300px; }
+.list-pane { flex: 0.65; }
+
+/* Group Boxes (Legends) */
+.group-box { border: 1px solid var(--border); background: white; padding: 25px 15px 15px; position: relative; border-radius: 4px; }
+.group-label { position: absolute; top: -10px; left: 10px; background: white; padding: 0 8px; font-size: 0.7rem; font-weight: bold; color: #333; border: 1px solid var(--border); }
+
+.input-set { margin-bottom: 15px; }
+.input-set label { display: block; font-size: 0.85rem; font-weight: 700; color: #444; margin-bottom: 5px; }
+select { width: 100%; padding: 10px; border: 1px solid var(--border); font-size: 0.9rem; }
+
+/* Buttons */
+.btn-stack { display: flex; flex-direction: column; gap: 10px; }
+.btn-blue { background: var(--dark-blue); color: white; border: none; padding: 12px; font-weight: bold; cursor: pointer; border-radius: 2px; }
+.btn-red { background: var(--red); color: white; border: none; padding: 12px; font-weight: bold; cursor: pointer; border-radius: 2px; }
+
+/* Table Section */
+.table-scroll { height: 400px; overflow-y: auto; border: 1px solid var(--border); }
+table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+th { background: #f8f8f8; padding: 10px; text-align: left; border: 1px solid var(--border); position: sticky; top: 0; }
+td { padding: 10px; border: 1px solid var(--border); }
+
+/* --- MODAL (POPUP) STYLING --- */
+.modal-overlay { 
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+    background: rgba(0,0,0,0.5); display: none; z-index: 2000; 
+    align-items: center; justify-content: center; 
+}
+.modal-window { background: white; width: 400px; border: 1px solid var(--primary); box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+.modal-header { background: var(--primary); color: white; padding: 5px 15px; display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: bold; }
+.close-modal { background: #c02031; color: white; border: 1px solid white; cursor: pointer; padding: 0 5px; }
+.modal-body { padding: 30px; }
+.modal-body label { display: block; font-size: 1rem; margin-bottom: 10px; font-weight: bold; }
+.yellow-input { width: 100%; padding: 10px; background: var(--yellow-focus); border: 1.5px solid var(--primary); font-size: 1.1rem; margin-bottom: 20px; }
+.btn-add-area { width: 100%; background: var(--red); color: white; border: none; padding: 12px; font-size: 1.1rem; font-weight: bold; cursor: pointer; }
+
+/* Footer */
+.status-bar { background: var(--primary); color: white; height: 35px; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; font-size: 0.7rem; flex-shrink: 0; }
+
+@media (max-width: 900px) { .main-grid { flex-direction: column; } .action-pane, .list-pane { width: 100%; } }

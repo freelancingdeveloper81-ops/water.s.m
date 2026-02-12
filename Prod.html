@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AquaFlow | Manage Inventory</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="Prod.css">
+</head>
+<body>
+
+    <header class="top-bar">
+        <div class="header-logo">
+            <div class="logo-circle"><i class="fas fa-droplet"></i></div>
+            <div class="logo-text">
+                <h1>Drinking Water 💧</h1>
+                <p>Inventory Software</p>
+            </div>
+        </div>
+        <nav class="icon-nav">
+            <a href="index.html" class="nav-item"><i class="fas fa-chart-line"></i><span>Dashboard</span></a>
+            <div class="nav-item dropdown active">
+                <i class="fas fa-box"></i><span>Products 📦</span>
+                <div class="dropdown-content">
+                    <a href="Prod.html">Manage Inventory ➕</a>
+                    <a href="fill.html">Stock History 📜</a>
+                </div>
+            </div>
+            <a href="cust.html" class="nav-item"><i class="fas fa-users"></i><span>Customers</span></a>
+            <a href="Reports.html" class="nav-item"><i class="fas fa-file-invoice"></i><span>Reports</span></a>
+            <a href="Settings.html" class="nav-item"><i class="fas fa-gear"></i><span>Setting</span></a>
+        </nav>
+        <div class="window-controls">
+            <button id="theme-toggle"><i class="fas fa-moon"></i></button>
+            <i class="fas fa-rectangle-xmark close-btn"></i>
+        </div>
+    </header>
+
+    <main class="form-wrapper">
+        <div class="container">
+            <div class="form-header">
+                <h2><i class="fas fa-plus-circle"></i> Create New Product Record 📦</h2>
+                <p>Fill details to store in the local system database.</p>
+            </div>
+
+            <!-- Form Section -->
+            <form id="productForm" class="professional-form">
+                <div class="form-section">
+                    <h3><i class="fas fa-info-circle"></i> Basic Identification</h3>
+                    <div class="grid-3">
+                        <div class="input-group">
+                            <label>Product Name</label>
+                            <input type="text" id="pName" placeholder="Enter the Product name " required>
+                        </div>
+                        <div class="input-group">
+                            <label>SKU / Barcode</label>
+                            <input type="text" id="pSKU" placeholder="AF-WATER-001" required>
+                        </div>
+                        <div class="input-group">
+                            <label>Category</label>
+                            <select id="pCat">
+                                <option>Natural Mineral Water</option>
+                                <option>Distilled Water</option>
+                                <option>Empty Bottles/Jars</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3><i class="fas fa-money-bill-wave"></i> Stock & Pricing</h3>
+                    <div class="grid-4">
+                        <div class="input-group">
+                            <label>Initial Qty</label>
+                            <input type="number" id="pQty" placeholder="0" required>
+                        </div>
+                        <div class="input-group">
+                            <label>Unit Size</label>
+                            <input type="text" id="pUnit" placeholder="e.g. 19 Liters">
+                        </div>
+                        <div class="input-group">
+                            <label>Purchase Price ($)</label>
+                            <input type="number" id="pBuy" step="0.01" required>
+                        </div>
+                        <div class="input-group">
+                            <label>Selling Price ($)</label>
+                            <input type="number" id="pSell" step="0.01" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-footer-actions">
+                    <button type="reset" class="btn-clear">Clear Form 🧹</button>
+                    <button type="submit" class="btn-submit">Save Product ✅</button>
+                </div>
+            </form>
+
+            <!-- Storage Display Table -->
+            <div class="data-display-section">
+                <div class="section-header">
+                    <h3><i class="fas fa-list"></i> Recently Added Inventory</h3>
+                    <button onclick="clearAllData()" class="btn-danger-sm">Delete All</button>
+                </div>
+                <div class="table-wrapper">
+                    <table id="productTable">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>SKU</th>
+                                <th>Stock</th>
+                                <th>Buy ($)</th>
+                                <th>Sell ($)</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="productData">
+                            <!-- JS will inject rows here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="status-bar">
+        <div class="status-left">© SOFTWEBPK - Local Database Active</div>
+        <div class="status-right">Items Stored: <span id="itemCount">0</span></div>
+    </footer>
+
+    <script src="Prod.js"></script>
+</body>
+</html>

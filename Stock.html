@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock IN/OUT | AquaFlow Pro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="Stock.css">
+</head>
+<body>
+
+    <!-- Professional Top Bar -->
+    <header class="top-bar">
+        <div class="header-logo">
+            <div class="logo-circle"><i class="fas fa-droplet"></i></div>
+            <div class="logo-text">
+                <h1>Drinking Water 💧</h1>
+                <p>Inventory Software</p>
+            </div>
+        </div>
+        
+        <nav class="software-nav">
+            <a href="index.html" class="nav-item"><i class="fas fa-chart-line"></i><span>Dashboard 📊</span></a>
+            <a href="produ.html" class="nav-item active"><i class="fas fa-box"></i><span>Products 📦</span></a>
+            <a href="cust.html" class="nav-item"><i class="fas fa-users"></i><span>Customers 👥</span></a>
+            <a href="staff.html" class="nav-item"><i class="fas fa-user-tie"></i><span>Employee 👤</span></a>
+            <a href="Reports.html" class="nav-item"><i class="fas fa-file-invoice"></i><span>Reports 📑</span></a>
+            <a href="Settings.html" class="nav-item"><i class="fas fa-gears"></i><span>Setting ⚙️</span></a>
+        </nav>
+
+        <div class="window-controls">
+            <button id="theme-toggle"><i class="fas fa-moon"></i></button>
+            <i class="fas fa-minus"></i>
+            <i class="fas fa-expand"></i>
+            <i class="fas fa-rectangle-xmark close-red"></i>
+        </div>
+    </header>
+
+    <div class="user-strip">
+        <span><b>User:</b> Tahir Qureshi 👤</span>
+    </div>
+
+    <!-- Page Content -->
+    <main class="workspace">
+        <div class="page-title-row">
+            <h2>Stock IN /OUT 🔄</h2>
+            <div class="top-filters">
+                <div class="filter-group">
+                    <label>Salesman</label>
+                    <select><option>All Salesman 👥</option></select>
+                </div>
+                <div class="filter-group">
+                    <label>Date:</label>
+                    <input type="date" id="headerDate">
+                </div>
+                <button class="btn-select">Select</button>
+            </div>
+        </div>
+
+        <div class="main-grid">
+            <!-- LEFT: Input Form -->
+            <section class="form-section">
+                <div class="group-box">
+                    <span class="group-label">STOCK IN OUT</span>
+                    <form id="stockForm">
+                        <div class="input-field">
+                            <label>Date:</label>
+                            <input type="date" id="sDate" required>
+                        </div>
+                        <div class="input-field">
+                            <label>Salesman</label>
+                            <select id="sSalesman" required>
+                                <option value="">SELECT SALESMAN 👤</option>
+                                <option>Ali Ahmed</option>
+                                <option>Zeeshan Khan</option>
+                            </select>
+                        </div>
+                        <div class="input-field">
+                            <label>Product</label>
+                            <select id="sProduct" required>
+                                <option value="">SELECT PRODUCT 📦</option>
+                                <option value="1-19 Litr">1-19 Litr 🍶</option>
+                                <option value="2-600ml">2-600ml 💧</option>
+                                <option value="3-1.5litr">3-1.5litr 🍼</option>
+                                <option value="4-Caps">4-Caps ⚙️</option>
+                            </select>
+                        </div>
+                        <div class="input-row">
+                            <div class="input-field">
+                                <label>Qty:</label>
+                                <input type="number" id="sQty" class="qty-yellow" required>
+                            </div>
+                            <div class="input-field">
+                                <label>Stock Status:</label>
+                                <select id="sStatus" required>
+                                    <option value="">SELECT STATUS 🚦</option>
+                                    <option>Stock IN Fill 📥</option>
+                                    <option>Stock OUT 📤</option>
+                                    <option>Stock IN (Empty) ♻️</option>
+                                    <option>Stock OUT (Empty) 🚚</option>
+                                    <option>Damage ❌</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="input-field">
+                            <label>Remarks</label>
+                            <input type="text" id="sRemarks">
+                        </div>
+
+                        <div class="btn-group">
+                            <button type="submit" class="btn-blue">Set New Stock ➕</button>
+                            <button type="button" class="btn-blue">Update Stock 🔄</button>
+                            <button type="reset" class="btn-red">Cancel 🚫</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <!-- RIGHT: Data Table -->
+            <section class="table-section">
+                <div class="group-box">
+                    <span class="group-label">Stock IN - OUT</span>
+                    <div class="table-container">
+                        <table id="stockTable">
+                            <thead>
+                                <tr>
+                                    <th>SNO</th>
+                                    <th>Date</th>
+                                    <th>Product Name</th>
+                                    <th>Qty</th>
+                                    <th>Status</th>
+                                    <th>Salesman</th>
+                                    <th>Remarks</th>
+                                </tr>
+                            </thead>
+                            <tbody id="stockBody">
+                                <!-- Data will be added here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Professional Footer Bar -->
+    <footer class="status-bar">
+        <div class="foot-left">Copyright all rights reserved by <b>SOFTWEBPK</b></div>
+        <div class="foot-center">App Code: <b>RG-Demo</b></div>
+        <div class="foot-right">Help Line: <b>0092-315-1150070</b> 📞</div>
+    </footer>
+
+    <script src="Stock.js"></script>
+</body>
+</html>

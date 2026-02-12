@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Our Logistics Team | HydroFlow UK</title>
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="Contact.css">
+</head>
+<body>
+
+    <!-- Professional Navigation -->
+    <header class="main-header">
+        <nav class="container nav-flex">
+            <a href="index.html" class="logo"><i class="fas fa-droplet"></i> Hydro<span>Flow</span></a>
+            <ul class="nav-links">
+                        <li><a href="index.html">Home</a></li>
+                <li><a href="Services.html">Services</a></li>
+                <li><a href="Book.html">Booking</a></li>
+                <li><a href="Indus.html">Industries</a></li>
+                <li><a href="Contact.html">Contact us</a></li>
+                <li><a href="About.html">About us</a></li>
+            </ul>
+            <div class="header-actions">
+                <div class="theme-switch-wrapper">
+                    <label class="theme-switch"><input type="checkbox" id="theme-toggle"><div class="slider round"></div></label>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="contact-hero">
+        <div class="container">
+            <span class="badge">24/7 National Dispatch</span>
+            <h1>Get in Touch with our <br><span class="accent">Water Logistics Experts</span></h1>
+            <p>Whether it's a planned construction project or an industrial emergency, our UK-wide network is ready to flow.</p>
+        </div>
+    </section>
+
+    <!-- Main Contact Grid -->
+    <section class="contact-main section-padding">
+        <div class="container grid-contact">
+            
+            <!-- Left: Contact Information -->
+            <div class="contact-info-side" data-reveal="left">
+                <div class="info-card">
+                    <h3>Emergency Response</h3>
+                    <p>Immediate assistance for bursts or supply failures.</p>
+                    <a href="tel:08001234567" class="phone-link"><i class="fas fa-phone-volume"></i> 0800 123 4567</a>
+                </div>
+
+                <div class="details-list">
+                    <div class="detail-item">
+                        <i class="fas fa-envelope-open-text"></i>
+                        <div>
+                            <h4>General Inquiries</h4>
+                            <p>ops@hydroflow.co.uk</p>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-building"></i>
+                        <div>
+                            <h4>UK Headquarters</h4>
+                            <p>102 Logistics Plaza, Canary Wharf, London, E14 5AB</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service Area Section -->
+                <div class="service-area-box">
+                    <h3><i class="fas fa-map-location-dot"></i> Service Coverage: UK Wide</h3>
+                    <p>We operate 14 strategic dispatch centers ensuring rapid delivery to:</p>
+                    <ul class="area-list">
+                        <li><i class="fas fa-check"></i> London & South East</li>
+                        <li><i class="fas fa-check"></i> Midlands (Birmingham/Leicester)</li>
+                        <li><i class="fas fa-check"></i> The North (Manchester/Leeds)</li>
+                        <li><i class="fas fa-check"></i> Scotland & Wales Regions</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Right: Contact Form -->
+            <div class="contact-form-side" data-reveal="right">
+                <form id="contactForm" class="styled-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" id="name" placeholder="John Smith" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Company</label>
+                            <input type="text" id="company" placeholder="e.g. BuildCorp UK">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Business Email</label>
+                        <input type="email" id="email" placeholder="john@company.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Service Required</label>
+                        <select id="serviceType">
+                            <option>Bulk Water Supply</option>
+                            <option>Emergency Delivery</option>
+                            <option>Leak Detection Audit</option>
+                            <option>Long-term Contract Inquiry</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Your Message</label>
+                        <textarea id="message" rows="5" placeholder="Tell us about your project requirements..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Send Inquiry <i class="fas fa-paper-plane"></i></button>
+                </form>
+                <div id="formFeedback" class="form-feedback"></div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="contact-footer">
+        <div class="container">
+            <p align="center">&copy; 2024 HydroFlow Management Systems Ltd. Registered in England & Wales.</p>
+
+        </div>
+    </footer>
+
+    <script src="Contact.js"></script>
+</body>
+</html>

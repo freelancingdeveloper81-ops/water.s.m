@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Area Assign | AquaFlow ERP</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="Area.css">
+</head>
+<body>
+
+    <!-- Professional Top Bar -->
+    <header class="top-bar">
+        <div class="header-logo">
+            <div class="logo-circle"><i class="fas fa-droplet"></i></div>
+            <div class="logo-text">
+                <h1>Drinking Water 💧</h1>
+                <p>Inventory Software</p>
+            </div>
+        </div>
+        
+        <nav class="software-nav">
+            <a href="produ.html" class="nav-item"><i class="fas fa-chart-line"></i><span>Dashboard 📈</span></a>
+            <a href="Prod.html" class="nav-item"><i class="fas fa-box"></i><span>Products 📦</span></a>
+            <a href="cust.html" class="nav-item"><i class="fas fa-users"></i><span>Customers 👥</span></a>
+            <a href="vendor.html" class="nav-item"><i class="fas fa-truck"></i><span>Vendor 🚛</span></a>
+            <a href="Staff.html" class="nav-item active"><i class="fas fa-user-tie"></i><span>Employee 👤</span></a>
+            <a href="Reports.html" class="nav-item"><i class="fas fa-file-invoice"></i><span>Reports 📑</span></a>
+            <a href="Expenditure.html" class="nav-item"><i class="fas fa-dollar-sign"></i><span>Expenditure 💸</span></a>
+            <a href="Transaction.html" class="nav-item"><i class="fas fa-money-bill-transfer"></i><span>Transaction 💳</span></a>
+            <a href="Settings.html" class="nav-item"><i class="fas fa-gears"></i><span>Setting ⚙️</span></a>
+        </nav>
+
+        <div class="window-controls">
+            <button id="theme-toggle"><i class="fas fa-moon"></i></button>
+            <i class="fas fa-window-minimize"></i>
+            <i class="fas fa-rectangle-xmark close-btn" onclick="location.href='produ.html'"></i>
+        </div>
+    </header>
+
+    <div class="user-strip">
+        <span><b>User:</b> Tahir Qureshi 👤</span>
+    </div>
+
+    <main class="workspace">
+        <div class="page-title">
+            <h2>AREA ASSIGN 📍</h2>
+        </div>
+
+        <div class="main-grid">
+            <!-- Left Pane: Assign Actions -->
+            <section class="action-pane">
+                <div class="group-box">
+                    <span class="group-label">Area Assign To Employee</span>
+                    <div class="input-set">
+                        <label>Select Employee</label>
+                        <select id="empSelect">
+                            <option value="">SELECT EMPLOYEE 👤</option>
+                            <!-- Linked from Employee Module -->
+                        </select>
+                    </div>
+                    <div class="input-set">
+                        <label>Select Area</label>
+                        <select id="areaSelect">
+                            <option value="">SELECT AREA 🗺️</option>
+                            <!-- Linked from Add New Area Logic -->
+                        </select>
+                    </div>
+                    <div class="btn-stack">
+                        <button class="btn-blue" onclick="assignArea()">Assign Area 🔗</button>
+                        <button class="btn-blue" onclick="toggleAreaModal(true)">Add New Area ➕</button>
+                        <button class="btn-red" onclick="location.reload()">Refresh 🔄</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Right Pane: List -->
+            <section class="list-pane">
+                <div class="group-box">
+                    <span class="group-label">Employee Area List</span>
+                    <div class="table-scroll">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>SNO</th>
+                                    <th>Area Name</th>
+                                    <th>Total Customer Count in Area</th>
+                                </tr>
+                            </thead>
+                            <tbody id="areaTableBody">
+                                <!-- Data will load here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Add New Area Modal (Popup) -->
+        <div class="modal-overlay" id="areaModal">
+            <div class="modal-window">
+                <div class="modal-header">
+                    <span>Add New Area</span>
+                    <button class="close-modal" onclick="toggleAreaModal(false)">X</button>
+                </div>
+                <div class="modal-body">
+                    <label>Enter Area Name</label>
+                    <input type="text" id="newAreaInput" placeholder="e.g. Gulshan-e-Iqbal" class="yellow-input">
+                    <button class="btn-add-area" onclick="saveNewArea()">Add Area 🚩</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="status-bar">
+        <div class="status-left">Copyright all rights reserved by <b>SOFTWEBPK</b></div>
+        <div class="status-center">App Code: <b>RG-Demo</b></div>
+        <div class="status-right">Help Line: <b>0092-315-1150070</b> 📞</div>
+    </footer>
+
+    <script src="Area.js"></script>
+</body>
+</html>

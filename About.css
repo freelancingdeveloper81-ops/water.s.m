@@ -1,0 +1,76 @@
+/* --- Blue Professional Variables --- */
+:root {
+    --primary: #0077b6;
+    --primary-dark: #03045e;
+    --accent: #00b4d8;
+    --bg-main: #f8fbff;
+    --bg-card: #ffffff;
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --border: #e2e8f0;
+}
+
+[data-theme="dark"] {
+    --bg-main: #020617;
+    --bg-card: #0f172a;
+    --text-main: #f1f5f9;
+    --text-muted: #94a3b8;
+    --border: #1e293b;
+}
+
+* { margin:0; padding:0; box-sizing: border-box; }
+body { font-family: 'Inter', sans-serif; background-color: var(--bg-main); color: var(--text-main); line-height: 1.6; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+.section-padding { padding: 100px 0; }
+.alt-bg { background-color: var(--bg-card); }
+.center { text-align: center; }
+
+/* --- Header --- */
+.main-header { padding: 20px 0; background: var(--bg-card); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
+.nav-flex { display: flex; justify-content: space-between; align-items: center; }
+.logo { font-size: 1.5rem; font-weight: 800; text-decoration: none; color: var(--text-main); }
+.logo span { color: var(--primary); }
+.nav-links { display: flex; list-style: none; gap: 25px; }
+.nav-links a { text-decoration: none; color: var(--text-main); font-weight: 600; font-size: 0.9rem; }
+.nav-links a.active { color: var(--primary); }
+
+/* --- Hero --- */
+.about-hero { padding: 100px 0; background: linear-gradient(rgba(0,119,182,0.05), transparent); text-align: center; }
+.badge { background: var(--primary); color: white; padding: 5px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: bold; text-transform: uppercase; }
+.about-hero h1 { font-size: 3.5rem; margin: 20px 0; line-height: 1.2; }
+.accent { color: var(--primary); }
+
+/* --- Mission Section --- */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.section-title { font-size: 2.5rem; margin-bottom: 20px; }
+.stats-mini { display: flex; gap: 40px; margin-top: 30px; }
+.stat strong { display: block; font-size: 2rem; color: var(--primary); }
+.stat span { font-size: 0.9rem; color: var(--text-muted); }
+
+.experience-box { background: var(--primary-dark); color: white; padding: 50px; border-radius: 20px; }
+
+/* --- Regulation Cards --- */
+.reg-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px; }
+.reg-card { background: var(--bg-main); padding: 40px; border-radius: 20px; border: 1px solid var(--border); transition: 0.3s; }
+.reg-card i { font-size: 2rem; color: var(--primary); margin-bottom: 20px; }
+.reg-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.05); border-color: var(--primary); }
+
+/* --- Why Choose Us --- */
+.benefits-container { max-width: 800px; margin: 50px auto 0; }
+.benefit-row { display: flex; gap: 30px; margin-bottom: 40px; align-items: flex-start; }
+.benefit-icon { background: var(--primary); color: white; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 15px; flex-shrink: 0; font-size: 1.5rem; }
+.benefit-content h4 { font-size: 1.25rem; margin-bottom: 10px; color: var(--primary); }
+
+/* --- Footer --- */
+.about-footer { padding: 40px 0; text-align: center; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--text-muted); }
+
+/* --- Animations --- */
+[data-reveal] { opacity: 0; transition: 0.8s; }
+[data-reveal="left"] { transform: translateX(-30px); }
+[data-reveal="right"] { transform: translateX(30px); }
+.revealed { opacity: 1; transform: translate(0); }
+
+@media (max-width: 768px) {
+    .grid-2 { grid-template-columns: 1fr; }
+    .about-hero h1 { font-size: 2.2rem; }
+}

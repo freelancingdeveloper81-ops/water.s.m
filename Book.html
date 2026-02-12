@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Water Supply | HydroFlow Logistics</title>
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="Book.css">
+    <!-- EmailJS SDK (Real Email Integration ke liye) -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+</head>
+<body>
+
+    <!-- Simple Navigation -->
+    <header class="main-header">
+        <nav class="container nav-flex">
+            <a href="index.html" class="logo"><i class="fas fa-droplet"></i> Hydro<span>Flow</span></a>
+            <div class="theme-switch-wrapper">
+                <label class="theme-switch"><input type="checkbox" id="theme-toggle"><div class="slider round"></div></label>
+            </div>
+        </nav>
+    </header>
+
+    <main class="booking-page">
+        <div class="container">
+            
+            <!-- Booking Container -->
+            <div class="booking-wrapper" id="bookingMain">
+                <div class="booking-header">
+                    <h1>Schedule Your <span class="accent">Supply</span></h1>
+                    <p>Provide your logistics requirements and our dispatch team will contact you within 15 minutes.</p>
+                    
+                    <!-- Progress Bar -->
+                    <div class="progress-container">
+                        <div class="progress" id="progress"></div>
+                        <div class="circles">
+                            <div class="circle active">1</div>
+                            <div class="circle">2</div>
+                            <div class="circle">3</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Multi-Step Form -->
+                <form id="waterBookingForm" class="booking-form">
+                    
+                    <!-- Step 1: Contact Details -->
+                    <div class="form-step active" id="step1">
+                        <h2 class="step-title"><i class="fas fa-user-tie"></i> Contact Information</h2>
+                        <div class="input-grid">
+                            <div class="form-group">
+                                <label>Full Name</label>
+                                <input type="text" name="user_name" id="userName" placeholder="John Doe" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Company Name</label>
+                                <input type="text" name="company_name" id="companyName" placeholder="Project / Firm Name">
+                            </div>
+                            <div class="form-group">
+                                <label>Business Email</label>
+                                <input type="email" name="user_email" id="userEmail" placeholder="email@company.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Phone Number</label>
+                                <input type="tel" name="user_phone" id="userPhone" placeholder="+1 (555) 000-0000" required>
+                            </div>
+                        </div>
+                        <div class="form-footer">
+                            <button type="button" class="btn-next" onclick="nextStep(2)">Next: Logistics <i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Logistics & Quantity -->
+                    <div class="form-step" id="step2">
+                        <h2 class="step-title"><i class="fas fa-truck-container"></i> Logistics Details</h2>
+                        <div class="input-grid">
+                            <div class="form-group">
+                                <label>Industry Sector</label>
+                                <select name="sector" id="sector" required>
+                                    <option value="">Select Industry</option>
+                                    <option value="Construction">Construction</option>
+                                    <option value="Property Management">Property Management</option>
+                                    <option value="Industrial/Factory">Industrial/Factory</option>
+                                    <option value="Hospitality">Hospitality/Hotel</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Required Volume (Gallons)</label>
+                                <input type="number" name="volume" id="volume" placeholder="e.g. 5000" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Urgency Level</label>
+                                <select name="urgency" id="urgency">
+                                    <option value="Standard">Standard (24-48 Hours)</option>
+                                    <option value="Express">Express (Within 12 Hours)</option>
+                                    <option value="Emergency">Emergency (Immediate)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-footer">
+                            <button type="button" class="btn-prev" onclick="nextStep(1)">Back</button>
+                            <button type="button" class="btn-next" onclick="nextStep(3)">Next: Site Address <i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Site Address & Submit -->
+                    <div class="form-step" id="step3">
+                        <h2 class="step-title"><i class="fas fa-map-marker-alt"></i> Delivery Site</h2>
+                        <div class="form-group">
+                            <label>Full Site Address</label>
+                            <textarea name="site_address" id="siteAddress" rows="4" placeholder="Street, Building, Landmarks..." required></textarea>
+                        </div>
+                        <div class="form-footer">
+                            <button type="button" class="btn-prev" onclick="nextStep(2)">Back</button>
+                            <button type="submit" class="btn-submit" id="submitBtn">Confirm Booking & Send <i class="fas fa-paper-plane"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Success / Thank You State (Initially Hidden) -->
+            <div class="thank-you-container" id="thankYouState" style="display: none;">
+                <div class="success-icon"><i class="fas fa-check-circle"></i></div>
+                <h1>Order Successfully Sent!</h1>
+                <p>Thank you <span id="displayUserName"></span>. Your request has been logged in our dispatch system. One of our project managers will call you shortly at <span id="displayUserPhone"></span>.</p>
+                <div class="next-steps">
+                    <h3>What happens next?</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> Confirmation email sent.</li>
+                        <li><i class="fas fa-phone"></i> Logistics call within 15 mins.</li>
+                        <li><i class="fas fa-map"></i> GPS link for tanker tracking.</li>
+                    </ul>
+                </div>
+                <a href="index.html" class="btn-primary">Return to Home</a>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="Book.js"></script>
+</body>
+</html>

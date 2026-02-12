@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AquaFlow | New Product Entry</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="produ.css">
+</head>
+<body>
+
+    
+
+    <!-- Professional Top Bar (Same as Image) -->
+    <header class="top-bar">
+        <div class="header-logo">
+            <div class="logo-circle"><i class="fas fa-droplet"></i></div>
+            <div class="logo-text">
+                <h1>Drinking Water 💧</h1>
+                <p>Inventory Software</p>
+            </div>
+        </div>
+        <div class="user-info">
+            <span><b>User:</b> Tahir Qureshi 👤</span>
+        </div>
+        <div class="window-controls">
+            <button id="theme-toggle"><i class="fas fa-moon"></i></button>
+            <i class="fas fa-minus"></i>
+            <i class="fas fa-rectangle-xmark close-btn"></i>
+        </div>
+    </header>
+
+    <div class="sub-header">
+        <h2>NEW PRODUCT 📦</h2>
+    </div>
+
+    <main class="main-layout">
+        <!-- Form Section (Left Side) -->
+        <section class="form-container">
+            <div class="content-box">
+                <p class="box-label">New Product</p>
+                <form id="productForm">
+                    <div class="input-group">
+                        <label>Product Name:</label>
+                        <input type="text" id="pName" placeholder="Enter name" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Price:</label>
+                        <input type="number" id="pPrice" placeholder="Enter price" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Select Type:</label>
+                        <select id="pType" required>
+                            <option value="">Select Type</option>
+                            <option value="1.9 litre bottle">1.9 litre bottle 🍼</option>
+                            <option value="Dispossible bottle">Dispossible bottle 💧</option>
+                            <option value="accessories">Accessories ⚙️</option>
+                        </select>
+                    </div>
+
+                    <!-- Professional Button Grid (Same as image) -->
+                    <div class="btn-grid">
+                        <button type="button" class="btn-soft" onclick="resetForm()">New Product</button>
+                        <button type="button" class="btn-soft">Edit</button>
+                        <button type="submit" class="btn-save">Save</button>
+                        <button type="button" class="btn-soft">Update</button>
+                    </div>
+                    <button type="button" class="btn-danger-large" onclick="displayProducts()">Refresh</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Table Section (Right Side) -->
+        <section class="table-container">
+            <div class="content-box">
+                <p class="box-label">Products Detail</p>
+                <div class="table-scroll">
+                    <table id="productTable">
+                        <thead>
+                            <tr>
+                                <th>SNO</th>
+                                <th>Product Name</th>
+                                <th>Price</th>
+                                <th>Bottle Type</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="productData">
+                            <!-- Data will be injected here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Status Bar -->
+    <footer class="status-bar">
+        <div class="status-left">Copyright all rights reserved by <b>SOFTWEBPK</b></div>
+        <div class="status-center">App Code: <b>RG-Demo</b></div>
+        <div class="status-right">Help Line: <b>0092-315-1150070</b> 📞</div>
+    </footer>
+
+    <script src="produ.js"></script>
+</body>
+</html>

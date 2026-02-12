@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings | AquaFlow ERP</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="Settings.css">
+</head>
+<body>
+
+    <!-- Professional Top Bar Linked to System -->
+    <header class="top-bar">
+        <div class="header-logo">
+            <div class="logo-circle"><i class="fas fa-gears"></i></div>
+            <div class="logo-text">
+                <h1>Admin Control Center 🔐</h1>
+                <p>AquaFlow Enterprise v4.5</p>
+            </div>
+        </div>
+        <nav class="icon-nav">
+            <!-- Corrected Internal Links -->
+            <a href="produ.html" class="nav-item"><i class="fas fa-chart-line"></i><span>Dashboard</span></a>
+            <a href="Prod.html" class="nav-item"><i class="fas fa-box"></i><span>Inventory</span></a>
+            <div class="nav-item active"><i class="fas fa-sliders"></i><span>Settings</span></div>
+            <a href="Security.html" class="nav-item"><i class="fas fa-shield-halved"></i><span>Security</span></a>
+        </nav>
+        <div class="window-controls">
+            <button id="theme-toggle" title="Toggle Theme"><i class="fas fa-moon"></i></button>
+            <i class="fas fa-rectangle-xmark close-btn" onclick="location.href='produ.html'"></i>
+        </div>
+    </header>
+
+    <main class="settings-layout">
+        <div class="container-fluid">
+            <div class="settings-wrapper">
+                
+                <!-- Sidebar Category Selection -->
+                <aside class="settings-sidebar">
+                    <ul class="settings-menu">
+                        <li class="active" id="li-profile" onclick="showPanel('profile')"><i class="fas fa-building"></i> Company Profile</li>
+                        <li id="li-config" onclick="showPanel('config')"><i class="fas fa-bottle-water"></i> Units & Tax</li>
+                        <li id="li-users" onclick="showPanel('users')"><i class="fas fa-user-shield"></i> User Management</li>
+                        <li id="li-logs" onclick="showPanel('logs')"><i class="fas fa-clipboard-list"></i> Activity Logs</li>
+                    </ul>
+                </aside>
+
+                <!-- Dynamic Workspace -->
+                <section class="settings-panel">
+                    
+                    <!-- Panel: Company Profile -->
+                    <div id="profile-panel" class="panel active">
+                        <div class="panel-header">
+                            <h2>Business Identity 🏢</h2>
+                            <p>Global settings for your water supply enterprise.</p>
+                        </div>
+                        <form class="settings-form" id="companyForm">
+                            <div class="input-grid">
+                                <div class="input-group full-width">
+                                    <label>Legal Business Name</label>
+                                    <input type="text" id="compName" value="AquaFlow Pure Water Supply Ltd.">
+                                </div>
+                                <div class="input-group">
+                                    <label>Tax Registration (NTN/VAT)</label>
+                                    <input type="text" value="TAX-99281-00">
+                                </div>
+                                <div class="input-group">
+                                    <label>Support Email</label>
+                                    <input type="email" value="admin@aquaflow.pro">
+                                </div>
+                                <div class="input-group full-width">
+                                    <label>Headquarters Address</label>
+                                    <textarea rows="2">Plot 45, Industrial Area, Sector G-10, Karachi.</textarea>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn-primary">Save Changes ✅</button>
+                        </form>
+                    </div>
+
+                    <!-- Panel: Units & Config (Internal Logic) -->
+                    <div id="config-panel" class="panel">
+                        <div class="panel-header">
+                            <h2>Units & Financials ⚖️</h2>
+                            <p>Define bottle sizes and default tax rates.</p>
+                        </div>
+                        <div class="input-grid">
+                            <div class="input-group">
+                                <label>Default Tax Rate (%)</label>
+                                <input type="number" value="5">
+                            </div>
+                            <div class="input-group">
+                                <label>Currency Symbol</label>
+                                <input type="text" value="$ (USD)">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Panel: Logs (History Link) -->
+                    <div id="logs-panel" class="panel">
+                        <div class="panel-header">
+                            <h2>System Audit Trail 📜</h2>
+                        </div>
+                        <div class="log-container" id="systemLogs">
+                            <!-- Logs will be populated by JS -->
+                        </div>
+                    </div>
+
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <footer class="status-bar">
+        <div class="status-left">© SOFTWEBPK - Core Settings Module</div>
+        <div class="status-right">System Cloud Sync: <span class="sync">Optimal ●</span></div>
+    </footer>
+
+    <script src="Settings.js"></script>
+</body>
+</html>
