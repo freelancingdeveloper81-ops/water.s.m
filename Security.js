@@ -1,91 +1,75 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
-    // 1. Theme Persistence Linking
+    // 1. Theme Logic
     const themeBtn = document.getElementById('theme-toggle');
-    const html = document.documentElement;
-
-    // Load theme from shared storage
-    const savedTheme = localStorage.getItem('aquaTheme') || 'light';
-    html.setAttribute('data-theme', savedTheme);
-    updateThemeIcon(savedTheme);
-
     themeBtn.addEventListener('click', () => {
-        const currentTheme = html.getAttribute('data-theme');
-        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+        const html = document.documentElement;
+        const isDark = html.getAttribute('data-theme') === 'dark';
+        html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+        themeBtn.innerHTML = isDark ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
+    });
+
+    // 2. Default Join Date
+    document.getElementById('secDate').valueAsDate = new Date();
+
+    // 3. Form Submission
+    const form = document.getElementById('securityForm');
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const amt = document.getElementById('secAmount').value;
+        const status = document.getElementById('secStatus').value;
+        const desc = document.getElementById('secDetail').value;
         
-        html.setAttribute('data-theme', newTheme);
-        localStorage.setItem('aquaTheme', newTheme); // Sync across all files
-        updateThemeIcon(newTheme);
+        alert(`✅ ${status} of $${amt} recorded for current customer.`);
+        addRecordToTable(status, desc, amt);
+        form.reset();
+        document.getElementById('secDate').valueAsDate = new Date();
     });
-
-    function updateThemeIcon(theme) {
-        themeBtn.innerHTML = theme === 'dark' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
-    }
-
-    // 2. Sidebar Panel Switching Logic
-    const sideLinks = document.querySelectorAll('.side-link');
-    const panels = document.querySelectorAll('.settings-panel');
-
-    sideLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            const target = link.getAttribute('data-target');
-            if(!target) return; // Allow normal links like Reports.html
-
-            e.preventDefault();
-
-            // UI Refresh
-            sideLinks.forEach(l => l.classList.remove('active'));
-            panels.forEach(p => p.classList.remove('active'));
-
-            link.classList.add('active');
-            const panel = document.getElementById(`${target}-panel`);
-            if(panel) panel.classList.add('active');
-        });
-    });
-
-    // 3. Populate Mock Users & Logs
-    renderMockData();
 });
 
-function renderMockData() {
-    // User Table
-    const userBody = document.getElementById('userTableBody');
-    const users = [
-        {id: "AF-001", name: "Admin Main", role: "Super Admin", status: "Active"},
-        {id: "AF-009", name: "Operator 01", role: "Stock Manager", status: "Active"}
-    ];
-    userBody.innerHTML = users.map(u => `
-        <tr>
-            <td>#${u.id}</td>
-            <td><strong>${u.name}</strong></td>
-            <td><span class="badge admin">${u.role}</span></td>
-            <td><span class="status-on">${u.status}</span></td>
-            <td><button class="btn-sm">Modify</button></td>
-        </tr>
-    `).join('');
+// 4. Internal Link: Search Customer (Using 'myCustomers' storage key)
+function searchCustomer() {
+    const searchId = document.getElementById('secSearchId').value;
+    const allCustomers = JSON.parse(localStorage.getItem('myCustomers')) || [];
+    
+    const cust = allCustomers.find(c => c.id.toString().includes(searchId));
 
-    // Audit Logs
-    const logContainer = document.getElementById('auditLogContainer');
-    const logs = [
-        {time: "11:20 AM", action: "Admin updated tax configuration.", type: "info"},
-        {time: "10:05 AM", action: "Stock movement recorded by Operator_01.", type: "warn"},
-        {time: "Yesterday", action: "System automatic cloud backup completed.", type: "success"}
-    ];
-    logContainer.innerHTML = logs.map(l => `
-        <div class="audit-item ${l.type}">
-            <div class="audit-time">${l.time}</div>
-            <div class="audit-desc">${l.action}</div>
-        </div>
-    `).join('');
+    if(cust) {
+        document.getElementById('dispId').value = cust.id.toString().slice(-6);
+        document.getElementById('dispName').value = cust.name;
+        document.getElementById('dispAddr').value = cust.address || cust.area;
+        
+        // Mocking existing data for professional display
+        addRecordToTable("Deposit", "Bottle Security Guarantee", "2000");
+    } else {
+        alert("❌ Customer ID not found in master records.");
+    }
 }
 
-// 4. Global Action Simulation
-window.saveAdminSettings = () => {
-    const btn = event.currentTarget;
-    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Securing Data...';
+// 5. Update Audit Table UI
+let sno = 1;
+function addRecordToTable(status, desc, amt) {
+    const tbody = document.getElementById('securityTableBody');
+    const date = document.getElementById('secDate').value;
     
-    setTimeout(() => {
-        alert("✅ SYSTEM NOTIFICATION: Company profile and security protocols updated.");
-        btn.innerHTML = 'Update Profile ✅';
-    }, 1500);
+    const row = `<tr>
+        <td>${sno++}</td>
+        <td>${date}</td>
+        <td>${status}</td>
+        <td>${desc}</td>
+        <td style="font-weight:700;">${amt}</td>
+    </tr>`;
+    tbody.innerHTML += row;
+
+    // Update Totals Logic
+    const totalDep = document.getElementById('totalDep');
+    const balance = document.getElementById('secBalance');
+    
+    if(status === "Deposit") {
+        totalDep.value = parseInt(totalDep.value) + parseInt(amt);
+    }
+    balance.value = parseInt(totalDep.value) - parseInt(document.getElementById('totalRef').value);
+}
+
+function resetForm() {
+    document.getElementById('securityForm').reset();
 }
